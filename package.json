@@ -1,0 +1,46 @@
+{
+  "name": "onix-board",
+  "version": "1.0.0",
+  "description": "Onix chess board abstractions",
+  "main": "built/index.js",
+  "scripts": {
+    "build": "tsc && webpack",
+    "webpack": "webpack",
+    "publish": "tsc && webpack --config webpack.production.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrNixx/onix-board.git"
+  },
+  "keywords": [
+    "onix",
+    "chess",
+    "board"
+  ],
+  "author": "Nick Panteleeff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DrNixx/onix-board/issues"
+  },
+  "homepage": "https://github.com/DrNixx/onix-board#readme",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "onix-chess": "^1.0.2",
+    "onix-core": "^1.1.16",
+    "react": "^15.6.1",
+    "react-dnd": "^2.4.0",
+    "react-dnd-html5-backend": "^2.4.1",
+    "react-dom": "^15.6.1",
+    "rxjs": "^5.4.2",
+    "warning": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.12",
+    "@types/react": "^15.0.39",
+    "source-map-loader": "^0.2.1",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.2",
+    "webpack": "^2.3.3"
+  }
+}

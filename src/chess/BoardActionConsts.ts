@@ -1,0 +1,21 @@
+import * as types from './BoardActionTypes';
+
+export const SET_POSITION : types.SET_POSITION = 'SET_POSITION';
+export const SET_FEN : types.SET_FEN = 'SET_FEN';
+export const SET_SELECTION : types.SET_SELECTION = 'SET_SELECTION';
+export const SET_CASTLE : types.SET_CASTLE = 'SET_CASTLE';
+export const SET_MOVENO : types.SET_MOVENO = 'SET_MOVENO';
+export const WHO_MOVE : types.WHO_MOVE = 'WHO_MOVE';
+export const SET_EP : types.SET_EP = 'SET_EP';
+export const CLEAR_BOARD : types.CLEAR_BOARD = 'CLEAR_BOARD';
+export const STD_START : types.STD_START = 'STD_START';
+export const FLIP_BOARD : types.FLIP_BOARD = 'FLIP_BOARD';
+export const SET_COORDS : types.SET_COORDS = 'SET_COORDS';
+export const SET_FRAME : types.SET_FRAME = 'SET_FRAME';
+export const SET_MOVETURN : types.SET_MOVETURN = 'SET_MOVETURN';
+export const UDPATE_BOARD : types.UDPATE_BOARD = 'UDPATE_BOARD';
+export const CHANGE_SIZE : types.CHANGE_SIZE = 'CHANGE_SIZE';
+export const SET_PIECE : types.SET_PIECE = 'SET_PIECE';
+export const SET_SQUARE : types.SET_SQUARE = 'SET_SQUARE';
+export const BOARD_CLICK : types.BOARD_CLICK = 'BOARD_CLICK';
+export const BOARD_MOVE : types.BOARD_MOVE = 'BOARD_MOVE';
