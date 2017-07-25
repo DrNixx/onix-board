@@ -1,6 +1,6 @@
 import { Store } from 'redux';
 import { Position } from 'onix-chess';
-import { BoardSettings } from './ChessSettings';
+import { BoardSettings } from './BoardSettings';
 import { BoardMovement } from './BoardSelection';
 
 export interface BoardState extends BoardSettings {
