@@ -1,6 +1,6 @@
 {
   "name": "onix-board",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Onix chess board abstractions",
   "main": "built/index.js",
   "scripts": {
