@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Color } from './Constants';
 import { DumbPiece } from './DumbPiece';
-import { Logger } from '../Logger';
+import { Color } from 'onix-chess';
+import { Logger } from 'onix-core';
 
-interface DragPieceProps {
+export interface DragPieceProps {
     piece: number;
 }
 

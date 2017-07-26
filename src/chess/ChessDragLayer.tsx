@@ -3,7 +3,7 @@ import { DragLayer } from 'react-dnd';
 import { DragPiece } from './DragPiece';
 import { BoardSize, BoardSizeClass } from './Constants';
 
-const layerStyles = {
+const layerStyles: React.CSSProperties = {
     position: 'fixed',
     pointerEvents: 'none',
     zIndex: 100,
@@ -40,7 +40,7 @@ function getItemStyles(props) {
     };
 }
 
-interface ChessDragLayerProps {
+export interface ChessDragLayerProps {
     size?: BoardSize;
 }
 
