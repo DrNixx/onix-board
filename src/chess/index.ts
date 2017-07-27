@@ -2,6 +2,7 @@ import * as BoardActionTypes from './BoardActionTypes';
 import * as BoardActionConsts from './BoardActionConsts';
 import * as BoardActions from './BoardActions';
 
+export { DumbPiece } from './DumbPiece';
 export { ChessPiece } from './ChessPiece';
 export { ChessSquare } from './ChessSquare';
 export { ChessBoard } from './ChessBoard';
