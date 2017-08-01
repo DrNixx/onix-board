@@ -1,8 +1,9 @@
 {
   "name": "onix-board",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Onix chess board abstractions",
   "main": "built/index.js",
+  "types": "built/index.d.ts",
   "scripts": {
     "build": "tsc && webpack",
     "webpack": "webpack",
