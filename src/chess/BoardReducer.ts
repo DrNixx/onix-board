@@ -50,7 +50,7 @@ const INITIAL_STATE: BoardState = {
 }
 
 export const boardReducer: Reducer<BoardState> = (state: BoardState = INITIAL_STATE, action: BoardAction) => {
-    Logger.debug('Board action', action);
+    Logger.debug('Try board action', action);
     switch (action.type) {
         case actions.SET_POSITION:
             return { 
