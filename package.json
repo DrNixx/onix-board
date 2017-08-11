@@ -1,6 +1,6 @@
 {
   "name": "onix-board",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Onix chess board abstractions",
   "main": "built/index.js",
   "types": "built/index.d.ts",
@@ -27,13 +27,13 @@
   "homepage": "https://github.com/DrNixx/onix-board#readme",
   "dependencies": {
     "classnames": "^2.2.5",
-    "onix-chess": "^1.0.8",
-    "onix-core": "^1.1.24",
+    "onix-chess": "^1.0.11",
+    "onix-core": "^1.1.27",
     "react": "^15.6.1",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
     "react-dom": "^15.6.1",
-    "rxjs": "^5.4.2",
+    "rxjs": "^5.4.3",
     "warning": "^3.0.0"
   },
   "devDependencies": {
