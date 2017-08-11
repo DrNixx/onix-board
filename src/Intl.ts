@@ -6,7 +6,6 @@ export class Intl {
 
     public static register() {
         if (!Intl.intlInitialized) {
-            
             IntlCore.register();
             IntlChess.register();
 
@@ -23,6 +22,5 @@ export class Intl {
             Intl.intlInitialized = true;
         }
     }
-
 }
 
