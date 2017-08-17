@@ -1,10 +1,10 @@
 import { Reducer } from 'redux';
+import isString = require('lodash/isString');
 import { BoardSize } from './Constants';
 import { BoardState } from './BoardState';
 import { Position, FenStandartStart, FenEmptyBoard, Piece, Square } from 'onix-chess';
 import * as actions from './BoardActionConsts';
 import { BoardAction } from './BoardActions';
-import { isString } from 'onix-core';
 import { Logger } from 'onix-core';
 
 const updateStyle = (id: string, name: string) => {
