@@ -1,6 +1,6 @@
 {
   "name": "onix-board",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "description": "Onix chess board abstractions",
   "main": "built/index.js",
   "types": "built/index.d.ts",
@@ -28,22 +28,22 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
-    "onix-chess": "^1.1.14",
-    "onix-core": "^1.2.28",
-    "react": "^15.6.1",
-    "react-dnd": "^2.4.0",
-    "react-dnd-html5-backend": "^2.4.1",
-    "react-dom": "^15.6.1",
+    "onix-chess": "^1.1.15",
+    "onix-core": "^1.2.29",
+    "react": "^15.6.2",
+    "react-dnd": "^2.5.3",
+    "react-dnd-html5-backend": "^2.5.3",
+    "react-dom": "^15.6.2",
     "rxjs": "^5.4.3",
     "warning": "^3.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.73",
-    "@types/node": "^7.0.42",
-    "@types/react": "^15.6.1",
+    "@types/lodash": "^4.14.76",
+    "@types/node": "^7.0.43",
+    "@types/react": "^15.6.4",
     "source-map-loader": "^0.2.1",
-    "ts-loader": "^2.3.3",
-    "typescript": "^2.2.2",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.5.3",
     "webpack": "^2.3.3"
   }
 }
