@@ -1,7 +1,4 @@
 node_modules
-built
+dist
 .vscode
-/onix-board.js
-/onix-board.js.map
-
 npm-debug.log
