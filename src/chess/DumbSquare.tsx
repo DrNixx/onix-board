@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Color, Square } from 'onix-chess';
+import { Color } from 'onix-chess';
 
 export interface DumbSquareProps {
     color: number,

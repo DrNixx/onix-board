@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { DropTarget, DropTargetSpec, DropTargetConnector, DropTargetMonitor } from 'react-dnd';
 import { BoardRelatedStore } from './BoardState';
-import { Color } from 'onix-chess';
 import { Piece, Square } from 'onix-chess';
 import { ChessPiece } from './ChessPiece';
 import { DumbSquare } from './DumbSquare';

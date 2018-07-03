@@ -1,4 +1,4 @@
-import { BoardSize, BoardMode } from './Constants';
+import { BoardSize } from './Constants';
 
 export interface BoardSettings {
     fen?: string,

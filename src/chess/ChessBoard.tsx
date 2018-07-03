@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { BoardRelatedStore } from './BoardState';
 import { DumbBoard } from './DumbBoard';
-import { BoardMode } from './Constants';
 
 export interface ChessBoardProps {
     store: BoardRelatedStore,

@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { DragSource, DragSourceSpec, DragSourceConnector, DragSourceMonitor } from 'react-dnd';
 import { BoardRelatedStore } from './BoardState';
-import { Color, Piece, Square } from 'onix-chess';
 import { DumbPiece } from './DumbPiece';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { BoardAction } from './BoardActions';

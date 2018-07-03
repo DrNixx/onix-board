@@ -1,11 +1,9 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { Piece, Square } from 'onix-chess';
+import { Square } from 'onix-chess';
 import { BoardRelatedStore } from './BoardState';
-import { ChessPiece } from './ChessPiece';
 import { ChessSquare } from './ChessSquare';
-import { BoardSize, BoardMode, BoardSizeClass } from './Constants';
-import { Logger } from 'onix-core';
+import { BoardSizeClass } from './Constants';
 
 export interface DumbBoardProps {
     store: BoardRelatedStore,
