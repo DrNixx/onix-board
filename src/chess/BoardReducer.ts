@@ -1,5 +1,5 @@
+import isString from 'lodash-es/isString';
 import { Reducer } from 'redux';
-import isString = require('lodash/isString');
 import { BoardSize } from './Constants';
 import { BoardState } from './BoardState';
 import { Position, FenStandartStart, FenEmptyBoard, Piece, Square } from 'onix-chess';

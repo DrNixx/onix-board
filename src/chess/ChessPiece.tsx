@@ -14,9 +14,24 @@ export interface PieceProps {
     canMove: boolean,
     selected: boolean,
     dnd: boolean,
+    children?: React.ReactNode,
+    context?: any,
 }
 
-export const pieceSource: DragSourceSpec<PieceProps> = {
+function collect(connect: DragSourceConnector, monitor: DragSourceMonitor) {
+    return {
+      isDragging: monitor.isDragging(),
+      connectDragSource: connect.dragSource(),
+      connectDragPreview: connect.dragPreview()
+    };
+}
+
+export interface DragPiece {
+    from: number,
+    piece: number,
+}
+
+export const pieceSource: DragSourceSpec<PieceProps, DragPiece> = {
     canDrag(props) {
         return props.dnd && props.canMove;
     },
@@ -29,21 +44,13 @@ export const pieceSource: DragSourceSpec<PieceProps> = {
     },
 }
 
-function collect(connect: DragSourceConnector, monitor: DragSourceMonitor) {
-  return {
-    isDragging: monitor.isDragging(),
-    connectDragSource: connect.dragSource(),
-    connectDragPreview: connect.dragPreview()
-  };
-}
-
 @DragSource("DND_TYPES.PIECE", pieceSource, collect)
 export class ChessPiece extends React.Component<PieceProps, {}> {
     /**
      * constructor
      */
-    constructor(props: PieceProps) {
-        super(props);
+    constructor(props: PieceProps, context?: any) {
+        super(props, context);
     }
 
     componentDidMount() {
