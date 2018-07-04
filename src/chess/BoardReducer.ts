@@ -48,7 +48,7 @@ const INITIAL_STATE: BoardState = {
     doMove: (from, to, piece, position) => { return false; }
 }
 
-export const boardReducer: Reducer<BoardState> = (state: BoardState = INITIAL_STATE, action: BoardAction) => {
+export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState = INITIAL_STATE, action: BoardAction) => {
     switch (action.type) {
         case actions.SET_POSITION:
             return { 

@@ -2,6 +2,7 @@ import { Store } from 'redux';
 import { Position } from 'onix-chess';
 import { BoardSettings } from './BoardSettings';
 import { BoardMovement } from './BoardSelection';
+import { BoardAction } from './BoardActions';
 
 export interface BoardState extends BoardSettings {
     moveturn: boolean,
@@ -15,4 +16,4 @@ export interface BoardRelatedState {
     board: BoardState,
 }
 
-export type BoardRelatedStore = Store<BoardRelatedState>;
+export type BoardRelatedStore = Store<BoardRelatedState, BoardAction>;
