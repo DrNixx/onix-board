@@ -6,14 +6,16 @@ module.exports = {
     devtool: 'inline-source-map', 
 
     entry: {
-        app: ["./src/index.ts"]
+        app: ["./src/index.ts"],
+        tests: ["./src/test/index.ts"]
     },
 
     output: {
         libraryTarget: "umd",
         library: "onix",
         path: path.join(__dirname, "public/js"),
-        filename: "app.[name].js"
+        publicPath: 'js/',
+        filename: "board.[name].js"
     },
 
     plugins: [
@@ -24,7 +26,8 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                loader: 'ts-loader',
+                options: { configFile: 'tsconfig.webpack.json' },
                 exclude: /node_modules/
             }
         ]

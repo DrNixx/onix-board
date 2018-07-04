@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { DropTarget, DropTargetSpec, DropTargetConnector, DropTargetMonitor } from 'react-dnd';
+import { DropTarget, DropTargetSpec, DropTargetConnector, DropTargetMonitor, ConnectDropTarget } from 'react-dnd';
 import { BoardRelatedStore } from './BoardState';
 import { Piece, Square } from 'onix-chess';
 import { ChessPiece } from './ChessPiece';
@@ -16,7 +16,10 @@ export interface SquareProps {
     name?: string,
     piece?: number,
     legal?: boolean,
-    dnd: boolean
+    dnd: boolean,
+    connectDropTarget?: ConnectDropTarget,
+    isOver?: boolean,
+    canDrop?: boolean,
 }
 
 interface dragInfo {

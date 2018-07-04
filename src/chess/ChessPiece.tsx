@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { DragSource, DragSourceSpec, DragSourceConnector, DragSourceMonitor } from 'react-dnd';
+import { DragSource, DragSourceSpec, DragSourceConnector, DragSourceMonitor, ConnectDragSource } from 'react-dnd';
 import { BoardRelatedStore } from './BoardState';
 import { DumbPiece } from './DumbPiece';
 import { getEmptyImage } from 'react-dnd-html5-backend';
@@ -14,8 +14,8 @@ export interface PieceProps {
     canMove: boolean,
     selected: boolean,
     dnd: boolean,
-    children?: React.ReactNode,
-    context?: any,
+    connectDragSource?: ConnectDragSource;
+    isDragging?: boolean;
 }
 
 function collect(connect: DragSourceConnector, monitor: DragSourceMonitor) {
@@ -66,7 +66,7 @@ export class ChessPiece extends React.Component<PieceProps, {}> {
     }
 
     render() {
-        const { connectDragSource, piece, canMove, isDragging, selected } = this.props as any;
+        const { connectDragSource, piece, canMove, isDragging, selected } = this.props;
         return (
             <DumbPiece 
                 piece={piece}
