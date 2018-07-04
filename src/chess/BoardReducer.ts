@@ -5,7 +5,6 @@ import { BoardState } from './BoardState';
 import { Position, FenStandartStart, FenEmptyBoard, Piece, Square } from 'onix-chess';
 import * as actions from './BoardActionConsts';
 import { BoardAction } from './BoardActions';
-import { Logger } from 'onix-core';
 
 const updateStyle = (id: string, name: string) => {
     let style = document.getElementById(id) as HTMLLinkElement;
@@ -46,11 +45,10 @@ const INITIAL_STATE: BoardState = {
         }
     },
     canMove: canMove,
-    doMove: (from, to, piece) => { return false; }
+    doMove: (from, to, piece, position) => { return false; }
 }
 
 export const boardReducer: Reducer<BoardState> = (state: BoardState = INITIAL_STATE, action: BoardAction) => {
-    Logger.debug('Try board action', action);
     switch (action.type) {
         case actions.SET_POSITION:
             return { 
@@ -181,7 +179,7 @@ export const boardReducer: Reducer<BoardState> = (state: BoardState = INITIAL_ST
                         }
                     };
                 } else {
-                    const res = state.doMove(selection.from.square, action.square, selection.from.piece);
+                    const res = state.doMove(selection.from.square, action.square, selection.from.piece, state.position);
                     if (res) {
                         const fen = isString(res) ? <string>res : state.position.writeFEN();
                         const p = (selection.from.square === Square.NullSquare) ? selection.from.piece : Piece.NoPiece;
@@ -219,7 +217,7 @@ export const boardReducer: Reducer<BoardState> = (state: BoardState = INITIAL_ST
 
         case actions.BOARD_MOVE: {
             let { selection } = state;
-            const res = state.doMove(action.from, action.to, action.piece);
+            const res = state.doMove(action.from, action.to, action.piece, state.position);
             if (res) {
                 const fen = isString(res) ? <string>res : state.position.writeFEN();
                 const p = (selection.from.square === Square.NullSquare) ? selection.from.piece : Piece.NoPiece;

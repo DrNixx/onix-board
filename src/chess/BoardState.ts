@@ -8,7 +8,7 @@ export interface BoardState extends BoardSettings {
     position: Position,
     selection: BoardMovement,
     canMove: (from: number, to?: number) => boolean,
-    doMove: (from: number, to: number, piece: number) => boolean | string,
+    doMove: (from: number, to: number, piece: number, position: Position) => boolean | string,
 }
 
 export interface BoardRelatedState {
