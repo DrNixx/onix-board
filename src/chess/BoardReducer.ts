@@ -168,7 +168,7 @@ export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState
                         }
                     };
                 } else {
-                    const res = makeMove(selection.from.square, action.square, selection.from.piece, state.position);
+                    const res = makeMoveHandler(selection.from.square, action.square, selection.from.piece, state.position);
                     if (res) {
                         const fen = isString(res) ? <string>res : state.position.writeFEN();
                         const p = (selection.from.square === Square.NullSquare) ? selection.from.piece : Piece.NoPiece;
@@ -206,7 +206,7 @@ export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState
 
         case actions.BOARD_MOVE: {
             let { selection } = state;
-            const res = makeMove(action.from, action.to, action.piece, state.position);
+            const res = makeMoveHandler(action.from, action.to, action.piece, state.position);
             if (res) {
                 const fen = isString(res) ? <string>res : state.position.writeFEN();
                 const p = (selection.from.square === Square.NullSquare) ? selection.from.piece : Piece.NoPiece;
@@ -231,7 +231,7 @@ export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState
     }
 }
 
-export var makeMove = (from: number, to: number, piece: number, position: Position): boolean | string =>  {
+export var makeMoveHandler = (from: number, to: number, piece: number, position: Position): boolean | string =>  {
     if (from !== Square.NullSquare) {
         piece = piece || position.getPiece(from);
         if (!position.removePiece(piece, from)) {
