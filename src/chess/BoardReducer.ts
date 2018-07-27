@@ -5,6 +5,7 @@ import { BoardState } from './BoardState';
 import { Position, FenStandartStart, FenEmptyBoard, Piece, Square } from 'onix-chess';
 import * as actions from './BoardActionConsts';
 import { BoardAction } from './BoardActions';
+import { makeMoveHandler } from './BoardSettings';
 
 const updateStyle = (id: string, name: string) => {
     let style = document.getElementById(id) as HTMLLinkElement;
@@ -34,7 +35,8 @@ const INITIAL_STATE: BoardState = {
             piece: Piece.NoPiece,
             square: Square.NullSquare
         }
-    }
+    },
+    doMove: makeMoveHandler
 }
 
 export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState = INITIAL_STATE, action: BoardAction) => {
@@ -168,7 +170,7 @@ export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState
                         }
                     };
                 } else {
-                    const res = makeMoveHandler(selection.from.square, action.square, selection.from.piece, state.position);
+                    const res = state.doMove(selection.from.square, action.square, selection.from.piece, state.position);
                     if (res) {
                         const fen = isString(res) ? <string>res : state.position.writeFEN();
                         const p = (selection.from.square === Square.NullSquare) ? selection.from.piece : Piece.NoPiece;
@@ -206,7 +208,7 @@ export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState
 
         case actions.BOARD_MOVE: {
             let { selection } = state;
-            const res = makeMoveHandler(action.from, action.to, action.piece, state.position);
+            const res = state.doMove(action.from, action.to, action.piece, state.position);
             if (res) {
                 const fen = isString(res) ? <string>res : state.position.writeFEN();
                 const p = (selection.from.square === Square.NullSquare) ? selection.from.piece : Piece.NoPiece;
@@ -229,21 +231,4 @@ export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState
         default:
             return state;
     }
-}
-
-export var makeMoveHandler = (from: number, to: number, piece: number, position: Position): boolean | string =>  {
-    if (from !== Square.NullSquare) {
-        piece = piece || position.getPiece(from);
-        if (!position.removePiece(piece, from)) {
-            return false;
-        }
-    }
-
-    if (piece && to !== Square.NullSquare) {
-        if (!position.addPiece(piece, to)) {
-            return false;
-        }
-    }
-
-    return true;
 }

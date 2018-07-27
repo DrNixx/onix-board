@@ -9,7 +9,7 @@ import { BoardAction } from './BoardActions';
 import * as boardActions from './BoardActionConsts';
 import { Logger } from 'onix-core';
 import { BoardMovement } from './BoardSelection';
-import { canMoveFunc } from './BoardSettings';
+import { canMoveFunc, canMoveDefault } from './BoardSettings';
 
 export interface SquareProps {
     store: BoardRelatedStore,
@@ -62,6 +62,14 @@ function collect(connect: DropTargetConnector, monitor: DropTargetMonitor) {
 
 @DropTarget("DND_TYPES.PIECE", squareTarget, collect)
 export class ChessSquare extends React.Component<SquareProps, {}> {
+    public static defaultProps: SquareProps = {
+        store: null,
+        coord: 0,
+        dnd: false,
+        selection: null,
+        canMove: canMoveDefault,
+    }
+
     /**
      * constructor
      */
@@ -110,19 +118,19 @@ export class ChessSquare extends React.Component<SquareProps, {}> {
         } else if (!isOver && canDrop && legal) {
             classNames.push("square-can-move-to");
         } else {
-            if ((selection.from.square !== Square.NullSquare) && (selection.from.square === coord)) {
+            if (selection && (selection.from.square !== Square.NullSquare) && (selection.from.square === coord)) {
                 classNames.push("square-from-to");
             }
 
-            if (selection.to && (selection.to.square !== Square.NullSquare) && (selection.to.square === coord)) {
+            if (selection && selection.to && (selection.to.square !== Square.NullSquare) && (selection.to.square === coord)) {
                 classNames.push("square-from-to");
             }
 
-            if (selection.lastFrom && (selection.lastFrom.square !== Square.NullSquare) && (selection.lastFrom.square === coord)) {
+            if (selection && selection.lastFrom && (selection.lastFrom.square !== Square.NullSquare) && (selection.lastFrom.square === coord)) {
                 classNames.push("square-last-from-to");
             }
 
-            if (selection.lastTo && (selection.lastTo.square !== Square.NullSquare) && (selection.lastTo.square === coord)) {
+            if (selection && selection.lastTo && (selection.lastTo.square !== Square.NullSquare) && (selection.lastTo.square === coord)) {
                 classNames.push("square-last-from-to");
             }
         }

@@ -9,8 +9,8 @@ export { ChessBoard } from './ChessBoard';
 export { ChessDragLayer } from './ChessDragLayer';
 export { BoardSize, BoardSizeClass, BoardMode, Orientation } from './Constants';
 export { BoardSelection, BoardMovement } from './BoardSelection';
-export { BoardSettings, canMoveDefault } from './BoardSettings';
-export { boardReducer, makeMoveHandler } from './BoardReducer';
+export { BoardSettings } from './BoardSettings';
+export { boardReducer } from './BoardReducer';
 export { BoardState, BoardRelatedStore } from './BoardState';
 
 export { BoardActionTypes, BoardActionConsts, BoardActions };
