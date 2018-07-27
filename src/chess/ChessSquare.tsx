@@ -85,7 +85,7 @@ export class ChessSquare extends React.Component<SquareProps, {}> {
         const { store, piece, dnd, coord, selection, canMove } = this.props;
         
         if ((piece !== null) && (piece !== Piece.NoPiece)) {
-            const selected = (selection.from.square === coord) && (selection.from.piece === piece);
+            const selected = selection && (selection.from.square === coord) && (selection.from.piece === piece);
 
             return (
                 <ChessPiece 
