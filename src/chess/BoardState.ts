@@ -8,7 +8,7 @@ export interface BoardState extends BoardSettings {
     moveturn: boolean,
     position: Position,
     selection: BoardMovement,
-    doMove: makeMoveFunc
+    doMove?: makeMoveFunc
 }
 
 export interface BoardRelatedState {
