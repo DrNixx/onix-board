@@ -19,15 +19,6 @@ const updateStyle = (id: string, name: string) => {
 
 }
 
-const canMove = (from: number, to: number): boolean => {
-    if (typeof to === "undefined") {
-        return typeof from !== "undefined";
-    }
-
-    // const state: PositionState = this.store.getState();
-    return true; // (to == Square.NullSquare) || (state.board.position.getPiece(to) == Piece.NoPiece);
-}
-
 const INITIAL_STATE: BoardState = {
     size: BoardSize.Normal,
     piece: "alpha",
@@ -43,9 +34,7 @@ const INITIAL_STATE: BoardState = {
             piece: Piece.NoPiece,
             square: Square.NullSquare
         }
-    },
-    canMove: canMove,
-    doMove: (from, to, piece, position) => { return false; }
+    }
 }
 
 export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState = INITIAL_STATE, action: BoardAction) => {
@@ -179,7 +168,7 @@ export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState
                         }
                     };
                 } else {
-                    const res = state.doMove(selection.from.square, action.square, selection.from.piece, state.position);
+                    const res = makeMove(selection.from.square, action.square, selection.from.piece, state.position);
                     if (res) {
                         const fen = isString(res) ? <string>res : state.position.writeFEN();
                         const p = (selection.from.square === Square.NullSquare) ? selection.from.piece : Piece.NoPiece;
@@ -217,7 +206,7 @@ export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState
 
         case actions.BOARD_MOVE: {
             let { selection } = state;
-            const res = state.doMove(action.from, action.to, action.piece, state.position);
+            const res = makeMove(action.from, action.to, action.piece, state.position);
             if (res) {
                 const fen = isString(res) ? <string>res : state.position.writeFEN();
                 const p = (selection.from.square === Square.NullSquare) ? selection.from.piece : Piece.NoPiece;
@@ -240,4 +229,21 @@ export const boardReducer: Reducer<BoardState, BoardAction> = (state: BoardState
         default:
             return state;
     }
+}
+
+export var makeMove = (from: number, to: number, piece: number, position: Position): boolean | string =>  {
+    if (from !== Square.NullSquare) {
+        piece = piece || position.getPiece(from);
+        if (!position.removePiece(piece, from)) {
+            return false;
+        }
+    }
+
+    if (piece && to !== Square.NullSquare) {
+        if (!position.addPiece(piece, to)) {
+            return false;
+        }
+    }
+
+    return true;
 }

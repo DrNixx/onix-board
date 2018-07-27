@@ -8,6 +8,8 @@ import { DumbSquare } from './DumbSquare';
 import { BoardAction } from './BoardActions';
 import * as boardActions from './BoardActionConsts';
 import { Logger } from 'onix-core';
+import { BoardMovement } from './BoardSelection';
+import { canMoveFunc } from './BoardSettings';
 
 export interface SquareProps {
     store: BoardRelatedStore,
@@ -17,6 +19,9 @@ export interface SquareProps {
     piece?: number,
     legal?: boolean,
     dnd: boolean,
+    selection: BoardMovement,
+    canMove: canMoveFunc,
+
     connectDropTarget?: ConnectDropTarget,
     isOver?: boolean,
     canDrop?: boolean,
@@ -31,10 +36,9 @@ const squareTarget: DropTargetSpec<SquareProps> = {
     canDrop(props: SquareProps, monitor: DropTargetMonitor) {
         const draggedItem = monitor.getItem() as dragInfo;
         const fromSquare = draggedItem.from;
-        const toSquare = props.coord;
+        const { coord: toSquare, canMove } = props;
         
-        const state = props.store.getState();
-        return state.board.canMove(fromSquare, toSquare);
+        return canMove(fromSquare, toSquare);
     },
 
     drop(props: SquareProps, monitor: DropTargetMonitor) {
@@ -43,8 +47,6 @@ const squareTarget: DropTargetSpec<SquareProps> = {
         const to = props.coord;
 
         Logger.debug("ChessSquare drop");
-
-        const state = props.store.getState();
 
         props.store.dispatch({type: boardActions.BOARD_MOVE, from: from, to: to, piece: piece } as BoardAction);
     }
@@ -68,10 +70,8 @@ export class ChessSquare extends React.Component<SquareProps, {}> {
     }
 
     renderPiece? = () => {
-        const { store, piece, dnd, coord } = this.props;
-        const state = store.getState();
-        const { selection, canMove } = state.board;
-
+        const { store, piece, dnd, coord, selection, canMove } = this.props;
+        
         if ((piece !== null) && (piece !== Piece.NoPiece)) {
             const selected = (selection.from.square === coord) && (selection.from.piece === piece);
 
@@ -81,7 +81,7 @@ export class ChessSquare extends React.Component<SquareProps, {}> {
                     piece={piece} 
                     dnd={dnd} 
                     selected={selected}
-                    canMove={canMove(coord)} 
+                    allowMove={canMove(coord)} 
                     square={coord} 
                 />
             );
@@ -96,12 +96,9 @@ export class ChessSquare extends React.Component<SquareProps, {}> {
     }
 
     render() {
-        const { store, legal, coord, piece } = this.props;
+        const { legal, coord, piece, selection } = this.props;
         const { connectDropTarget, isOver, canDrop, } = this.props as any;
-        const state = store.getState();
-        const { selection } = state.board;
-
-
+        
         let { color, name } = this.props;
         color = color || Square.color(coord);
         name = name || Square.squareName(coord);

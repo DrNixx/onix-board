@@ -19,7 +19,6 @@ export class DragPiece extends React.Component<DragPieceProps, any> {
         return (
             <DumbPiece
                 piece={this.props.piece} 
-                canMove={true} 
                 isDragging={false}
                 onClick={this.onClick}
                 selected={true}

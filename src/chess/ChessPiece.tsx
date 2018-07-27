@@ -11,7 +11,7 @@ export interface PieceProps {
     store: BoardRelatedStore,
     piece: number,
     square: number,
-    canMove: boolean,
+    allowMove: boolean,
     selected: boolean,
     dnd: boolean,
     connectDragSource?: ConnectDragSource;
@@ -33,7 +33,7 @@ export interface DragPiece {
 
 export const pieceSource: DragSourceSpec<PieceProps, DragPiece> = {
     canDrag(props) {
-        return props.dnd && props.canMove;
+        return props.dnd && props.allowMove;
     },
 
     beginDrag(props) {
@@ -66,11 +66,10 @@ export class ChessPiece extends React.Component<PieceProps, {}> {
     }
 
     render() {
-        const { connectDragSource, piece, canMove, isDragging, selected } = this.props;
+        const { connectDragSource, piece, isDragging, selected } = this.props;
         return (
             <DumbPiece 
                 piece={piece}
-                canMove={canMove} 
                 isDragging={isDragging}
                 selected={selected}
                 onClick={this.onClick}

@@ -1,6 +1,6 @@
 {
   "name": "onix-board",
-  "version": "1.4.25",
+  "version": "1.5.26",
   "description": "Onix chess board abstractions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -39,13 +39,13 @@
     "warning": "^4.0.0"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.0",
-    "@types/node": "^10.5.1",
-    "@types/react": "^16.4.6",
+    "@types/lodash-es": "^4.17.1",
+    "@types/node": "^10.5.3",
+    "@types/react": "^16.4.7",
     "clean-webpack-plugin": "^0.1.19",
     "ts-loader": "^4.4.2",
     "typescript": "^2.9.2",
-    "webpack": "^4.14.0",
-    "webpack-cli": "^3.0.8"
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0"
   }
 }

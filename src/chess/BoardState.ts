@@ -7,9 +7,7 @@ import { BoardAction } from './BoardActions';
 export interface BoardState extends BoardSettings {
     moveturn: boolean,
     position: Position,
-    selection: BoardMovement,
-    canMove: (from: number, to?: number) => boolean,
-    doMove: (from: number, to: number, piece: number, position: Position) => boolean | string,
+    selection: BoardMovement
 }
 
 export interface BoardRelatedState {

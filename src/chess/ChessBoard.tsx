@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { BoardRelatedStore } from './BoardState';
 import { DumbBoard } from './DumbBoard';
+import { canMoveFunc, canMoveDefault } from './BoardSettings';
 
 export interface ChessBoardProps {
     store: BoardRelatedStore,
     dnd: boolean,
     legal?: boolean,
-    getPiece: (sq: number) => number
+    canMove?: canMoveFunc
 }
 
 export interface ChessBoardState {
@@ -15,6 +16,12 @@ export interface ChessBoardState {
 }
 
 export class ChessBoard extends React.Component<ChessBoardProps, ChessBoardState> {
+    public static defaultProps: ChessBoardProps = {
+        store: null,
+        dnd: false,
+        canMove: canMoveDefault,
+    }
+    
     /**
      * constructor
      */
@@ -23,16 +30,15 @@ export class ChessBoard extends React.Component<ChessBoardProps, ChessBoardState
     }
 
     render() {
-        const { store, dnd, legal, getPiece } = this.props;
-        const state = store.getState();
-        const { fen, size, coords, frame, flip, selection, canMove, doMove } = state.board;
-
+        const { store, dnd, legal, canMove } = this.props;
+        
         return (
             <DumbBoard
                 store={store} 
                 dnd={dnd}
                 legal={legal}
-                getPiece={getPiece} />
+                canMove={canMove} 
+            />
         );
     }
 }

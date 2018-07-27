@@ -3,7 +3,6 @@ import { Color, Piece } from 'onix-chess';
 
 export interface DumbPieceProps {
     piece: number,
-    canMove: boolean,
     isDragging?: boolean,
     selected: boolean,
     onClick: (e: React.MouseEvent<HTMLDivElement>) => void,
