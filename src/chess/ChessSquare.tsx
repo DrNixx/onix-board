@@ -19,8 +19,8 @@ export interface SquareProps {
     piece?: number,
     legal?: boolean,
     dnd: boolean,
-    selection: BoardMovement,
-    canMove: canMoveFunc,
+    selection?: BoardMovement,
+    canMove?: canMoveFunc,
 
     connectDropTarget?: ConnectDropTarget,
     isOver?: boolean,
@@ -65,6 +65,10 @@ export class ChessSquare extends React.Component<SquareProps, {}> {
     public static defaultProps: SquareProps = {
         store: null,
         coord: 0,
+        color: 0,
+        name: "a1",
+        piece: Piece.NoPiece,
+        legal: true,
         dnd: false,
         selection: null,
         canMove: canMoveDefault,
