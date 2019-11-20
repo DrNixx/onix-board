@@ -1,12 +1,9 @@
 import { Position, Square } from 'onix-chess';
 import { BoardSize } from './Constants';
+import { Config as CgConfig } from 'chessground/config';
 
-export interface BoardSettings {
-    fen?: string,
+export interface BoardSettings extends CgConfig {
     size: BoardSize,
-    coords?: boolean,
-    frame?: boolean,
-    flip?: boolean,
     piece?: string,
     square?: string,
     markers?: string,

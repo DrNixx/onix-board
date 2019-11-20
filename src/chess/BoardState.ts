@@ -1,14 +1,13 @@
 import { Store } from 'redux';
-import { Position } from 'onix-chess';
-import { BoardSettings, makeMoveFunc } from './BoardSettings';
-import { BoardMovement } from './BoardSelection';
 import { BoardAction } from './BoardActions';
+import { State as CgState} from 'chessground/state';
+import { BoardSize } from './Constants';
 
-export interface BoardState extends BoardSettings {
-    moveturn: boolean,
-    position: Position,
-    selection: BoardMovement,
-    doMove?: makeMoveFunc
+export interface BoardState extends CgState {
+    size: BoardSize,
+    piece?: string,
+    square?: string,
+    markers?: string,
 }
 
 export interface BoardRelatedState {
